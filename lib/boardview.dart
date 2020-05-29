@@ -9,6 +9,7 @@ import 'package:boardview/board_list.dart';
 
 class BoardView extends StatefulWidget {
   final String token;
+  final int cardId;
   final List<BoardList> lists;
   final double width;
   Widget middleWidget;
@@ -17,7 +18,7 @@ class BoardView extends StatefulWidget {
 
   Function(bool) itemInMiddleWidget;
   OnDropItem onDropItemInMiddleWidget;
-  BoardView({Key key, this.itemInMiddleWidget,this.onDropItemInMiddleWidget, this.isSelecting = false, this.token, this.lists, this.width = 280, this.middleWidget, this.bottomPadding}) : super(key: key);
+  BoardView({Key key, this.itemInMiddleWidget,this.onDropItemInMiddleWidget, this.isSelecting = false, this.token, this.cardId, this.lists, this.width = 280, this.middleWidget, this.bottomPadding}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -25,7 +26,7 @@ class BoardView extends StatefulWidget {
   }
 }
 
-typedef void OnDropItem(int listIndex, int itemIndex, String token);
+typedef void OnDropItem(int listIndex, int itemIndex, String token, int cardId);
 typedef void OnDropList(int listIndex);
 
 class BoardViewState extends State<BoardView> {
@@ -476,10 +477,10 @@ class BoardViewState extends State<BoardView> {
                   int startDraggedListIndex = startListIndex;
 
                   if(_isInWidget && widget.onDropItemInMiddleWidget != null){
-                    onDropItem(startDraggedListIndex, startDraggedItemIndex, widget.token);
-                    widget.onDropItemInMiddleWidget(startDraggedListIndex, startDraggedItemIndex, widget.token);
+                    onDropItem(startDraggedListIndex, startDraggedItemIndex, widget.token, widget.cardId);
+                    widget.onDropItemInMiddleWidget(startDraggedListIndex, startDraggedItemIndex, widget.token, widget.cardId);
                   }else{
-                    onDropItem(tempDraggedListIndex, tempDraggedItemIndex, widget.token);
+                    onDropItem(tempDraggedListIndex, tempDraggedItemIndex, widget.token, widget.cardId);
                   }
                 }
                 if (onDropList != null) {
