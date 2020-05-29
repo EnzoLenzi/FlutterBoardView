@@ -14,6 +14,7 @@ class BoardItem extends StatefulWidget {
   final BoardListState boardList;
   final Widget item;
   final int index;
+  final int id;
   final OnDropItem onDropItem;
   final OnTapItem onTapItem;
   final OnStartDragItem onStartDragItem;
@@ -26,6 +27,7 @@ class BoardItem extends StatefulWidget {
         this.boardList,
         this.item,
         this.index,
+        this.id,
         this.onDropItem,
         this.onTapItem,
         this.onStartDragItem,
@@ -43,18 +45,18 @@ class BoardItemState extends State<BoardItem> {
   double height;
   double width;
 
-  void onDropItem(int listIndex, int itemIndex, String token, int cardId) {
+  void onDropItem(int listIndex, int itemIndex, String token) {
     widget.boardList.widget.boardView.listStates[listIndex].setState(() {
       if (widget.onDropItem != null) {
         widget.onDropItem(listIndex, itemIndex,widget.boardList.widget.boardView.startListIndex,widget.boardList.widget.boardView.startItemIndex, this);
         print(token);
-        print(cardId);
+        print(widget.id);
       }
       widget.boardList.widget.boardView.draggedItemIndex = null;
       widget.boardList.widget.boardView.draggedListIndex = null;
     });
     print(token);
-    print(cardId);
+    print(widget.id);
   }
 
   void _startDrag(Widget item, BuildContext context) {
