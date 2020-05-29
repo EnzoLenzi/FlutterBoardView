@@ -14,20 +14,19 @@ class BoardItem extends StatefulWidget {
   final BoardListState boardList;
   final Widget item;
   final int index;
-  final int id;
   final OnDropItem onDropItem;
   final OnTapItem onTapItem;
   final OnStartDragItem onStartDragItem;
   final OnDragItem onDragItem;
   final bool draggable;
+  int id;
 
-  const BoardItem(
+  BoardItem(
       {Key key,
         this.token,
         this.boardList,
         this.item,
         this.index,
-        this.id,
         this.onDropItem,
         this.onTapItem,
         this.onStartDragItem,
@@ -38,6 +37,10 @@ class BoardItem extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return BoardItemState();
+  }
+
+  void setId(int id) {
+    this.id = id;
   }
 }
 
