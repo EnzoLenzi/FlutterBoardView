@@ -45,10 +45,13 @@ class BoardItemState extends State<BoardItem> {
     widget.boardList.widget.boardView.listStates[listIndex].setState(() {
       if (widget.onDropItem != null) {
         widget.onDropItem(listIndex, itemIndex,widget.boardList.widget.boardView.startListIndex,widget.boardList.widget.boardView.startItemIndex, this);
+        print("hey in if");
       }
+      print("hey in setstate");
       widget.boardList.widget.boardView.draggedItemIndex = null;
       widget.boardList.widget.boardView.draggedListIndex = null;
     });
+    print("hey out setstate");
   }
 
   void _startDrag(Widget item, BuildContext context) {
