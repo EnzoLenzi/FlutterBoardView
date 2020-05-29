@@ -10,6 +10,7 @@ typedef void OnDragItem(int oldListIndex, int oldItemIndex, int newListIndex,
     int newItemIndex, BoardItemState state);
 
 class BoardItem extends StatefulWidget {
+  final int id;
   final String token;
   final BoardListState boardList;
   final Widget item;
@@ -19,10 +20,10 @@ class BoardItem extends StatefulWidget {
   final OnStartDragItem onStartDragItem;
   final OnDragItem onDragItem;
   final bool draggable;
-  int id;
 
   BoardItem(
       {Key key,
+        this.id,
         this.token,
         this.boardList,
         this.item,
@@ -39,8 +40,8 @@ class BoardItem extends StatefulWidget {
     return BoardItemState();
   }
 
-  void setId(int id) {
-    this.id = id;
+  int getId() {
+    return (this.id);
   }
 }
 
@@ -53,13 +54,13 @@ class BoardItemState extends State<BoardItem> {
       if (widget.onDropItem != null) {
         widget.onDropItem(listIndex, itemIndex,widget.boardList.widget.boardView.startListIndex,widget.boardList.widget.boardView.startItemIndex, this);
         print(token);
-        print(widget.id);
+        print(widget.getId());
       }
       widget.boardList.widget.boardView.draggedItemIndex = null;
       widget.boardList.widget.boardView.draggedListIndex = null;
     });
     print(token);
-    print(widget.id);
+    print(widget.getId());
   }
 
   void _startDrag(Widget item, BuildContext context) {
