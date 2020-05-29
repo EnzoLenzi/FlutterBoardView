@@ -48,11 +48,13 @@ class BoardItemState extends State<BoardItem> {
       if (widget.onDropItem != null) {
         widget.onDropItem(listIndex, itemIndex,widget.boardList.widget.boardView.startListIndex,widget.boardList.widget.boardView.startItemIndex, this);
         print(widget.token);
+        print(widget.index.toString());
       }
       widget.boardList.widget.boardView.draggedItemIndex = null;
       widget.boardList.widget.boardView.draggedListIndex = null;
     });
     print(widget.token);
+    print(widget.index.toString());
   }
 
   void _startDrag(Widget item, BuildContext context) {
