@@ -18,6 +18,7 @@ class BoardItem extends StatefulWidget {
   final OnStartDragItem onStartDragItem;
   final OnDragItem onDragItem;
   final bool draggable;
+  final String token;
 
   const BoardItem(
       {Key key,
@@ -28,6 +29,7 @@ class BoardItem extends StatefulWidget {
         this.onTapItem,
         this.onStartDragItem,
         this.draggable = true,
+        this.token,
         this.onDragItem})
       : super(key: key);
 
@@ -45,13 +47,12 @@ class BoardItemState extends State<BoardItem> {
     widget.boardList.widget.boardView.listStates[listIndex].setState(() {
       if (widget.onDropItem != null) {
         widget.onDropItem(listIndex, itemIndex,widget.boardList.widget.boardView.startListIndex,widget.boardList.widget.boardView.startItemIndex, this);
-        print("hey in if");
+        print(widget.token);
       }
-      print("hey in setstate");
       widget.boardList.widget.boardView.draggedItemIndex = null;
       widget.boardList.widget.boardView.draggedListIndex = null;
     });
-    print("hey out setstate");
+    print(widget.token);
   }
 
   void _startDrag(Widget item, BuildContext context) {
