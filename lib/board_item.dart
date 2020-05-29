@@ -10,6 +10,7 @@ typedef void OnDragItem(int oldListIndex, int oldItemIndex, int newListIndex,
     int newItemIndex, BoardItemState state);
 
 class BoardItem extends StatefulWidget {
+  final String token;
   final BoardListState boardList;
   final Widget item;
   final int index;
@@ -18,10 +19,10 @@ class BoardItem extends StatefulWidget {
   final OnStartDragItem onStartDragItem;
   final OnDragItem onDragItem;
   final bool draggable;
-  final String token;
 
   const BoardItem(
       {Key key,
+        this.token,
         this.boardList,
         this.item,
         this.index,
@@ -29,7 +30,6 @@ class BoardItem extends StatefulWidget {
         this.onTapItem,
         this.onStartDragItem,
         this.draggable = true,
-        this.token,
         this.onDragItem})
       : super(key: key);
 
