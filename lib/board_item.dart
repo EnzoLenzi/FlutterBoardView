@@ -43,17 +43,17 @@ class BoardItemState extends State<BoardItem> {
   double height;
   double width;
 
-  void onDropItem(int listIndex, int itemIndex) {
+  void onDropItem(int listIndex, int itemIndex, String token) {
     widget.boardList.widget.boardView.listStates[listIndex].setState(() {
       if (widget.onDropItem != null) {
         widget.onDropItem(listIndex, itemIndex,widget.boardList.widget.boardView.startListIndex,widget.boardList.widget.boardView.startItemIndex, this);
-        print(widget.token);
+        print(token);
         print(widget.index.toString());
       }
       widget.boardList.widget.boardView.draggedItemIndex = null;
       widget.boardList.widget.boardView.draggedListIndex = null;
     });
-    print(widget.token);
+    print(token);
     print(widget.index.toString());
   }
 
